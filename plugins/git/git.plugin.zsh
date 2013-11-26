@@ -1,6 +1,6 @@
 # CUSTOM SHIT!
 function GG() {
-  git diff $1 && git commit $* && git fetch && ggpush && git pull --rebase
+  git diff && git commit $* && git fetch && ggpush && git pull --rebase
 }
 compdef _git GG=git-commit
 
