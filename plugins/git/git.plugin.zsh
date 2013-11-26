@@ -1,3 +1,5 @@
+zmodload zsh/regex
+
 # Aliases
 alias g='git'
 compdef g=git
@@ -152,9 +154,7 @@ alias gunwip='git log -n 1 | grep -q -c wip && git reset HEAD~1'
 
 # CUSTOM SHIT!
 function GG() {
-  if false; then #[[$* =~ '^(-|a)m*$']]; then
-    git diff
-  fi
+  [[ $* -regex-match "[\-|a]m" ]] && echo 'matched!'
   git commit $* && git fetch && git push origin $(current_branch) && git pull --rebase
 }
 compdef _git GG=git-commit
