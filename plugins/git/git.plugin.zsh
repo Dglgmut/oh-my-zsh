@@ -1,17 +1,3 @@
-# CUSTOM SHIT!
-function GG() {
-  git diff && git commit $* && git fetch && ggpush && git pull --rebase
-}
-compdef _git GG=git-commit
-
-function GC() {
-  git fetch -v && git checkout $1 && git pull --rebase
-}
-compdef _git GC=git-checkout
-
-alias GCM='git fetch -v && git checkout master && git pull --rebase'
-compdef _git GCM=git-checkout
-
 # Aliases
 alias g='git'
 compdef g=git
@@ -163,3 +149,18 @@ function work_in_progress() {
 # these alias commit and uncomit wip branches
 alias gwip='git add -A; git ls-files --deleted -z | xargs -0 git rm; git commit -m "wip"'
 alias gunwip='git log -n 1 | grep -q -c wip && git reset HEAD~1'
+
+# CUSTOM SHIT!
+function GG() {
+  git diff && git commit $* && git fetch && ggpush && git pull --rebase
+}
+compdef _git GG=git-commit
+
+function GC() {
+  git fetch -v && git checkout $1 && git pull --rebase
+}
+compdef _git GC=git-checkout
+
+alias GCM='git fetch -v && git checkout master && git pull --rebase'
+compdef _git GCM=git-checkout
+
