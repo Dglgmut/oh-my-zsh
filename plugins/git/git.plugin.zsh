@@ -1,7 +1,21 @@
+# CUSTOM SHIT!
+function GG() {
+  git diff $1 && git commit $* && git fetch && ggpush && git pull --rebase
+}
+compdef _git GG=git-commit
+
+function GC() {
+  git fetch -v && git checkout $1 && git pull --rebase
+}
+compdef _git GC=git-checkout
+
+alias GCM='git fetch -v && git checkout master && git pull --rebase'
+compdef _git GCM=git-checkout
+
 # Aliases
 alias g='git'
 compdef g=git
-alias gst='git status'
+alias gs='git status'
 compdef _git gst=git-status
 alias gd='git diff'
 compdef _git gd=git-diff
@@ -106,7 +120,7 @@ alias gsd='git svn dcommit'
 # Usage example: git pull origin $(current_branch)
 #
 function current_branch() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
+  ref=$(git rev-parse --abbrev-ref HEAD) || \
   ref=$(git rev-parse --short HEAD 2> /dev/null) || return
   echo ${ref#refs/heads/}
 }
