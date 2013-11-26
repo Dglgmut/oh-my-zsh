@@ -152,7 +152,7 @@ alias gunwip='git log -n 1 | grep -q -c wip && git reset HEAD~1'
 
 # CUSTOM SHIT!
 function GG() {
-  git diff && git commit $* && git fetch && ggpush && git pull --rebase
+  git diff && git commit $* && git fetch && git push origin $(current_branch) && git pull --rebase
 }
 compdef _git GG=git-commit
 
